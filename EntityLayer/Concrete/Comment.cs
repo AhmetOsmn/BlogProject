@@ -16,5 +16,10 @@ namespace EntityLayer.Concrete
         public string Content { get; set; }
         public DateTime CommentDate { get; set; }
         public bool Status { get; set; }
+
+        #region Relationships 
+        public int BlogId { get; set; }
+        public Blog Blog { get; set; }
+        #endregion
     }
 }
