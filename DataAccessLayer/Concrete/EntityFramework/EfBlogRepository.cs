@@ -11,7 +11,7 @@ namespace DataAccessLayer.Concrete.EntityFramework
     {
         public List<Blog> GetListWithCategory()
         {
-            using (Context context = new Context())
+            using (Context context = new())
             {
                 return context.Blogs.Include(x => x.Category).ToList();
             }
