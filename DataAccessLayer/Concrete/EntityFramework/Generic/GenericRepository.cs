@@ -1,9 +1,8 @@
 ﻿using DataAccessLayer.Abstract.Generic;
-using DataAccessLayer.Concrete;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace DataAccessLayer.Repositories.Generic
+namespace DataAccessLayer.Concrete.EntityFramework.Generic
 {
     public class GenericRepository<T> : IGenericDal<T> where T : class
     {

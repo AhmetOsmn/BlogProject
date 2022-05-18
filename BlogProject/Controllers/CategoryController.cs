@@ -1,6 +1,8 @@
 ﻿using BusinessLayer.Concrete;
 using DataAccessLayer.Concrete.EntityFramework;
+using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace BlogProject.Controllers
 {
@@ -9,7 +11,7 @@ namespace BlogProject.Controllers
         CategoryManager categoryManager = new(new EfCategoryRepository());
         public IActionResult Index()
         {
-            var categories = categoryManager.GetAll();
+            List<Category> categories = categoryManager.GetAll();
             return View(categories);
         }
     }
