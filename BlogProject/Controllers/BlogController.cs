@@ -1,6 +1,8 @@
 ﻿using BusinessLayer.Concrete;
 using DataAccessLayer.Concrete.EntityFramework;
+using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace BlogProject.Controllers
 {
@@ -12,5 +14,13 @@ namespace BlogProject.Controllers
             var blogs = blogManager.GetBlogWithCategory();
             return View(blogs);
         }
+
+        public IActionResult BlogReadAll(int id)
+        {
+            List<Blog> blog = blogManager.GetBlogById(id);
+            return View(blog);
+        }
+
+
     }
 }

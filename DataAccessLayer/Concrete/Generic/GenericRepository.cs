@@ -1,8 +1,10 @@
 ﻿using DataAccessLayer.Abstract.Generic;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 
-namespace DataAccessLayer.Concrete.EntityFramework.Generic
+namespace DataAccessLayer.Concrete.Generic
 {
     public class GenericRepository<T> : IGenericDal<T> where T : class
     {
@@ -24,6 +26,12 @@ namespace DataAccessLayer.Concrete.EntityFramework.Generic
         {
             using Context context = new();
             return context.Set<T>().ToList();
+        }
+
+        public List<T> GetAll(Expression<Func<T, bool>> filter)
+        {
+            using Context context = new();
+            return context.Set<T>().Where(filter).ToList();
         }
 
         public T GetById(int id)
