@@ -21,7 +21,7 @@ namespace BlogProject.Controllers
 
         public PartialViewResult CommentListByBlog(int id)
         {
-            List<Comment> comments = commentManager.GetAll(id);
+            List<Comment> comments = commentManager.GetAllByBlog(id);
             return PartialView(comments);
         }
     }
