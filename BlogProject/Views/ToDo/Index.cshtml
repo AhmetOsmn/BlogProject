@@ -1,33 +1,39 @@
-﻿<h1>Eklenecek özellikler</h1>
-<ul>
-    <li style="margin-bottom: 15px;">
-        <div style="border: 1px solid gray; display: flex; flex-direction: column; padding: 15px; border-radius: 10px;">
-            <p>Blog detay sayfasında eğer bloğa bir yorum yapılmadı ise "Henüz hiç yorum yapılmadı, ilk yorumu siz yapın" şeklinde mesaj yazdırılacak. Eğer yorum yapıldıysa yorumlar listelenecek</p>
-            <img src="~/CoreBlogTema/todo1.png" alt="" />
-        </div>
-    </li>
-    <li style="margin-bottom: 15px;">
-        <div style="border: 1px solid gray; display: flex; flex-direction: column; padding: 15px; border-radius: 10px;">
-            <p>Kayıt işlemi yapılırken girilen 2 şifre eşleşmiyorsa kayıt işlemi yapılmasın. Girilen iki şifre aynı ise kayıt işlemi gerçekleşsin.</p>
-            <img src="~/CoreBlogTema/todo2.png" alt="" />
-        </div>
-    </li>
-    <li style="margin-bottom: 15px;">
-        <div style="border: 1px solid gray; display: flex; flex-direction: column; padding: 15px; border-radius: 10px;">
-            <p>Kayıt sayfasında, viewmodel kullanarak dropdown list ile şehirler gösterilecek. DB ye kayıt edilmesine gerek yok.</p>
-            <img src="~/CoreBlogTema/todo3.png" alt="" />
-        </div>
-    </li>
-    <li style="margin-bottom: 15px;">
-        <div style="border: 1px solid gray; display: flex; flex-direction: column; padding: 15px; border-radius: 10px;">
-            <p>Şifre validasyonunda şifrede en az "1 Büyük, 1 Küçük harf ve 1 Sayı olması kontrol edilecek.</p>
-            <img src="~/CoreBlogTema/todo4.png" alt="" />
-        </div>
-    </li>
-    <li style="margin-bottom: 15px;">
-        <div style="border: 1px solid gray; display: flex; flex-direction: column; padding: 15px; border-radius: 10px;">
-            <p>Abone ol butonuna basıldığında, yandaki sayfaya gitmeden veri tabanına kayıt etme işlemi yapılacak. - Aynı sorun yorum yapma kısmında da var. Orası da düzeltilecek </p>
-            <img src="~/CoreBlogTema/todo5.png" alt="" />
-        </div>
-    </li>
-</ul>
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/UserLayout.cshtml";
+}
+<div class="container">
+    <h1>Eklenecek özellikler</h1>
+    <ul>
+        <li style="margin-bottom: 15px;">
+            <div style="border: 1px solid gray; display: flex; flex-direction: column; padding: 15px; border-radius: 10px;">
+                <p>Blog detay sayfasında eğer bloğa bir yorum yapılmadı ise "Henüz hiç yorum yapılmadı, ilk yorumu siz yapın" şeklinde mesaj yazdırılacak. Eğer yorum yapıldıysa yorumlar listelenecek</p>
+                <img src="~/CoreBlogTema/todo1.png" alt="" />
+            </div>
+        </li>
+        <li style="margin-bottom: 15px;">
+            <div style="border: 1px solid gray; display: flex; flex-direction: column; padding: 15px; border-radius: 10px;">
+                <p>Kayıt işlemi yapılırken girilen 2 şifre eşleşmiyorsa kayıt işlemi yapılmasın. Girilen iki şifre aynı ise kayıt işlemi gerçekleşsin.</p>
+                <img src="~/CoreBlogTema/todo2.png" alt="" />
+            </div>
+        </li>
+        <li style="margin-bottom: 15px;">
+            <div style="border: 1px solid gray; display: flex; flex-direction: column; padding: 15px; border-radius: 10px;">
+                <p>Kayıt sayfasında, viewmodel kullanarak dropdown list ile şehirler gösterilecek. DB ye kayıt edilmesine gerek yok.</p>
+                <img src="~/CoreBlogTema/todo3.png" alt="" />
+            </div>
+        </li>
+        <li style="margin-bottom: 15px;">
+            <div style="border: 1px solid gray; display: flex; flex-direction: column; padding: 15px; border-radius: 10px;">
+                <p>Şifre validasyonunda şifrede en az "1 Büyük, 1 Küçük harf ve 1 Sayı olması kontrol edilecek.</p>
+                <img src="~/CoreBlogTema/todo4.png" alt="" />
+            </div>
+        </li>
+        <li style="margin-bottom: 15px;">
+            <div style="border: 1px solid gray; display: flex; flex-direction: column; padding: 15px; border-radius: 10px;">
+                <p>Abone ol butonuna basıldığında, yandaki sayfaya gitmeden veri tabanına kayıt etme işlemi yapılacak. - Aynı sorun yorum yapma kısmında da var. Orası da düzeltilecek </p>
+                <img src="~/CoreBlogTema/todo5.png" alt="" />
+            </div>
+        </li>
+    </ul>
+</div>
