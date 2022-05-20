@@ -9,7 +9,7 @@ namespace BlogProject.Controllers
 {
     public class CommentController : Controller
     {
-        CommentManager commentManager = new(new EfCommentRepository());
+        readonly CommentManager commentManager = new(new EfCommentRepository());
         public IActionResult Index()
         {
             return View();

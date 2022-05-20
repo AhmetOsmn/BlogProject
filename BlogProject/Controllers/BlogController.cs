@@ -31,7 +31,7 @@ namespace BlogProject.Controllers
 
         public IActionResult BlogListByWriter()
         {
-            List<Blog> blogs = blogManager.GetBlogListByWriter(1);
+            List<Blog> blogs = blogManager.GetBlogListWithCategoryByWriter(1);
             return View(blogs);
         }
 
@@ -72,6 +72,15 @@ namespace BlogProject.Controllers
                 }
             }
             return View();
+        }
+
+        public IActionResult BlogDelete(int id)
+        {
+            Blog blog = blogManager.GetById(id);
+            blog.Status = false;
+            blogManager.Update(blog);
+            //blogManager.Delete(blog);
+            return RedirectToAction("BlogListByWriter", "Blog");
         }
 
     }

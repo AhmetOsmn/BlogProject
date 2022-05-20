@@ -16,5 +16,13 @@ namespace DataAccessLayer.Concrete.EntityFramework
                 return context.Blogs.Include(x => x.Category).ToList();
             }
         }
+
+        public List<Blog> GetListWithCategoryByWriter(int id)
+        {
+            using (Context context = new())
+            {
+                return context.Blogs.Include(x => x.Category).Where(x => x.WriterId == id).ToList();
+            }
+        }
     }
 }

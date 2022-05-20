@@ -9,7 +9,7 @@ namespace BlogProject.Controllers
 {
     public class RegisterController : Controller
     {
-        WriterManager writerManager = new(new EfWriterRepository());
+        readonly WriterManager writerManager = new(new EfWriterRepository());
 
 
         [HttpGet]
