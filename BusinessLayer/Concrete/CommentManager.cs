@@ -7,7 +7,7 @@ namespace BusinessLayer.Concrete
 {
     public class CommentManager : ICommentService
     {
-        ICommentDal _commentDal;
+        readonly ICommentDal _commentDal;
 
         public CommentManager(ICommentDal commetDal)
         {

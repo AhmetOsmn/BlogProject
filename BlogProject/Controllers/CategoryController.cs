@@ -8,7 +8,7 @@ namespace BlogProject.Controllers
 {
     public class CategoryController : Controller
     {
-        CategoryManager categoryManager = new(new EfCategoryRepository());
+        readonly CategoryManager categoryManager = new(new EfCategoryRepository());
         public IActionResult Index()
         {
             List<Category> categories = categoryManager.GetAll();

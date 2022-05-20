@@ -6,7 +6,7 @@ namespace BlogProject.Controllers
 {
     public class AboutController : Controller
     {
-        AboutManager aboutManager = new(new EfAboutRepository());
+        readonly AboutManager aboutManager = new(new EfAboutRepository());
 
         public IActionResult Index()
         {

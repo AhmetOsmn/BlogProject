@@ -10,7 +10,7 @@ namespace BlogProject.Controllers
     [AllowAnonymous]
     public class BlogController : Controller
     {
-        BlogManager blogManager = new(new EfBlogRepository());
+        readonly BlogManager blogManager = new(new EfBlogRepository());
         public IActionResult Index()
         {
             var blogs = blogManager.GetBlogListWithCategory();

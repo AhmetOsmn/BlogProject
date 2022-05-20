@@ -7,8 +7,7 @@ namespace BlogProject.Controllers
 {
     public class NewsLetterController : Controller
     {
-
-        NewsLetterManager newsLetterManager = new(new EfNewsLetterRepository());
+        readonly NewsLetterManager newsLetterManager = new(new EfNewsLetterRepository());
 
         [HttpGet]
         public PartialViewResult SubscribeMail()
@@ -20,7 +19,7 @@ namespace BlogProject.Controllers
         public PartialViewResult SubscribeMail(NewsLetter newsLetter)
         {
             newsLetter.MailStatus = true;
-            newsLetterManager.AddNewsLetter(newsLetter);
+            newsLetterManager.Add(newsLetter);
             return PartialView();
         }
     }

@@ -6,7 +6,7 @@ namespace BlogProject.ViewComponents.Comment
 {
     public class CommentListByBlog : ViewComponent
     {
-        CommentManager commentManager = new(new EfCommentRepository());
+        readonly CommentManager commentManager = new(new EfCommentRepository());
         public IViewComponentResult Invoke(int id)
         {
             var values = commentManager.GetAllByBlog(id);
