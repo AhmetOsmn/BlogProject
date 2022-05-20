@@ -1,11 +1,7 @@
 ﻿using BusinessLayer.Abstract;
 using DataAccessLayer.Abstract;
 using EntityLayer.Concrete;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BusinessLayer.Concrete
 {
@@ -18,9 +14,29 @@ namespace BusinessLayer.Concrete
             _newsLetter = newsLetter;
         }
 
-        public void AddNewsLetter(NewsLetter newsLetter)
+        public void Add(NewsLetter item)
         {
-            _newsLetter.Add(newsLetter);
+            _newsLetter.Add(item);
+        }
+
+        public void Delete(NewsLetter item)
+        {
+            _newsLetter.Delete(item);
+        }
+
+        public List<NewsLetter> GetAll()
+        {
+            return _newsLetter.GetAll();
+        }
+
+        public NewsLetter GetById(int id)
+        {
+            return _newsLetter.GetById(id);
+        }
+
+        public void Update(NewsLetter item)
+        {
+            _newsLetter.Update(item);
         }
     }
 }

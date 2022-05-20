@@ -1,11 +1,7 @@
 ﻿using BusinessLayer.Abstract;
 using DataAccessLayer.Abstract;
 using EntityLayer.Concrete;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BusinessLayer.Concrete
 {
@@ -18,9 +14,29 @@ namespace BusinessLayer.Concrete
             _contactDal = contactDal;
         }
 
-        public void AddContact(Contact contact)
+        public void Add(Contact item)
         {
-            _contactDal.Add(contact);
+            _contactDal.Add(item);
+        }
+
+        public void Delete(Contact item)
+        {
+            _contactDal.Delete(item);
+        }
+
+        public List<Contact> GetAll()
+        {
+            return _contactDal.GetAll();
+        }
+
+        public Contact GetById(int id)
+        {
+            return _contactDal.GetById(id);
+        }
+
+        public void Update(Contact item)
+        {
+            _contactDal.Update(item);
         }
     }
 }

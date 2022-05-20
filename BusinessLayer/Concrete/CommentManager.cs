@@ -1,48 +1,47 @@
 ﻿using BusinessLayer.Abstract;
 using DataAccessLayer.Abstract;
 using EntityLayer.Concrete;
-using System;
 using System.Collections.Generic;
 
 namespace BusinessLayer.Concrete
 {
     public class CommentManager : ICommentService
     {
-        ICommentDal _commetDal;
+        ICommentDal _commentDal;
 
         public CommentManager(ICommentDal commetDal)
         {
-            _commetDal = commetDal;
+            _commentDal = commetDal;
         }
 
         public void Add(Comment item)
         {
-            _commetDal.Add(item);
+            _commentDal.Add(item);
         }
 
         public void Delete(Comment item)
         {
-            throw new NotImplementedException();
-        }
-
-        public List<Comment> GetAllByBlog(int id)
-        {
-            return _commetDal.GetAll(x => x.BlogId == id);
-        }
-
-        public List<Comment> GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Comment GetById(int id)
-        {
-            throw new NotImplementedException();
+            _commentDal.Delete(item);
         }
 
         public void Update(Comment item)
         {
-            throw new NotImplementedException();
+            _commentDal.Update(item);
+        }
+
+        public List<Comment> GetAll()
+        {
+            return _commentDal.GetAll();
+        }
+
+        public Comment GetById(int id)
+        {
+            return _commentDal.GetById(id);
+        }
+
+        public List<Comment> GetAllByBlog(int id)
+        {
+            return _commentDal.GetAll(x => x.BlogId == id);
         }
     }
 }

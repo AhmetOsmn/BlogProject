@@ -1,7 +1,6 @@
 ﻿using BusinessLayer.Abstract;
 using DataAccessLayer.Abstract;
 using EntityLayer.Concrete;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -18,17 +17,27 @@ namespace BusinessLayer.Concrete
 
         public void Add(Blog item)
         {
-            throw new NotImplementedException();
+            _blogDal.Add(item);
         }
 
         public void Delete(Blog item)
         {
-            throw new NotImplementedException();
+            _blogDal.Delete(item);
+        }
+        
+        public void Update(Blog item)
+        {
+            _blogDal.Update(item);
         }
 
         public List<Blog> GetAll()
         {
             return _blogDal.GetAll();   
+        }
+        
+        public Blog GetById(int id)
+        {
+            return _blogDal.GetById(id);
         }
 
         public List<Blog> GetBlogListWithCategory()
@@ -36,24 +45,14 @@ namespace BusinessLayer.Concrete
             return _blogDal.GetListWithCategory();
         }
 
-        public Blog GetById(int id)
+        public List<Blog> GetBlogListByWriter(int id)
         {
-            throw new NotImplementedException();
+            return _blogDal.GetAll(x => x.WriterId == id);
         }
 
         public List<Blog> GetBlogById(int id)
         {
             return _blogDal.GetAll(x => x.Id == id);
-        }
-
-        public void Update(Blog item)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Blog> GetBlogListByWriter(int id)
-        {
-            return _blogDal.GetAll(x => x.WriterId == id);
         }
 
         public List<Blog> GetLast3Blog()
