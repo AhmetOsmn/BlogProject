@@ -29,13 +29,13 @@ namespace BlogProject.Controllers
         [AllowAnonymous]
         public PartialViewResult WriterNavbarPartial()
         {
-            return PartialView();   
+            return PartialView();
         }
 
         [AllowAnonymous]
         public PartialViewResult WriterFooterPartial()
         {
-            return PartialView();   
+            return PartialView();
         }
     }
 }

@@ -13,15 +13,21 @@ namespace BlogProject.Controllers
         readonly BlogManager blogManager = new(new EfBlogRepository());
         public IActionResult Index()
         {
-            var blogs = blogManager.GetBlogListWithCategory();
+            List<Blog> blogs = blogManager.GetBlogListWithCategory();
             return View(blogs);
         }
 
         public IActionResult BlogReadAll(int id)
         {
             ViewBag.Id = id;
-            List<Blog> blog = blogManager.GetBlogById(id);
-            return View(blog);
+            List<Blog> blogs = blogManager.GetBlogById(id);
+            return View(blogs);
+        }
+
+        public IActionResult BlogListByWriter()
+        {
+            List<Blog> blogs = blogManager.GetBlogListByWriter(1);
+            return View(blogs);
         }
 
 

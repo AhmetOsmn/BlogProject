@@ -23,28 +23,18 @@ namespace BlogProject.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Index(Writer writer)
         {
-            //Context context = new();
-            //var dataValue = context.Writers.FirstOrDefault(x => x.Mail == writer.Mail && x.Password == writer.Password);
-            //if(dataValue != null)
-            //{
-            //    HttpContext.Session.SetString("UserName",writer.Mail);
-            //    return RedirectToAction("Index","Writer");
-            //}
-            //else
-            //{
-            //    return View();
-            //}
-
             Context context = new();
+
             var dataValue = context.Writers.FirstOrDefault(x => x.Mail == writer.Mail && x.Password == writer.Password);
+
             if (dataValue != null)
             {
-                var claims = new List<Claim>
+                List<Claim> claims = new List<Claim>
                {
                    new Claim(ClaimTypes.Name, writer.Mail),
                };
 
-                var userIdentity = new ClaimsIdentity(claims, "a");
+                ClaimsIdentity userIdentity = new(claims, "a");
                 ClaimsPrincipal principal = new(userIdentity);
                 await HttpContext.SignInAsync(principal);
                 return RedirectToAction("Index", "Writer");

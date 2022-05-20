@@ -22,7 +22,7 @@ namespace BlogProject.Controllers
             contact.ContactDate = DateTime.Parse(DateTime.Now.ToShortDateString());
             contact.Status = true;
             contactManager.Add(contact);
-            return RedirectToAction("Index","Blog");
+            return RedirectToAction("Index", "Blog");
         }
     }
 }

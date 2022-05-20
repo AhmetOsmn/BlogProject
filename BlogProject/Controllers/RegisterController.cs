@@ -22,7 +22,9 @@ namespace BlogProject.Controllers
         public IActionResult Index(Writer writer)
         {
             WriterValidator validationRules = new();
+
             ValidationResult results = validationRules.Validate(writer);
+
             if (results.IsValid)
             {
                 writer.Status = true;
