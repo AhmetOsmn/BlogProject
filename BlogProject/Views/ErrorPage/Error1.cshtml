@@ -1,0 +1,50 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <title>Error</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8" />
+   <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    <link rel="stylesheet" href="~/weberror/css/style.css" type="text/css" media="all" />
+    <link href="~/weberror/css/font-awesome.css" rel="stylesheet">
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+</head>
+
+<body>
+    <section class="w3l-error-61-404">
+        <div class="error-61-mian">
+            <div class="wrapper">
+                <div class="errors-16-top">
+                    <div class="errors-16-info">
+                        <h3>404 </h3>
+                        <p>Oops! Sayfa Bulunamadı !</p>
+                        <a href="/Blog/Index/" class="btn btn-warning">Ana Sayfaya Dön</a>
+                    </div>
+
+                </div>
+                <div class="copyright-footer">
+                    <div class="copy-right">
+                        <p>
+                            © @DateTime.Now.Year BlogProject. Tüm hakları saklıdır| Design by
+                            <a href="http://w3layouts.com/" target="_blank">W3layouts</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
