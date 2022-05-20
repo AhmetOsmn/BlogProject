@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace EntityLayer.Concrete
 {
@@ -12,6 +13,10 @@ namespace EntityLayer.Concrete
         public string Mail{ get; set; }
         public string Password { get; set; }
         public bool Status { get; set; }
+
+        #region Reletionships
+        public List<Blog> Blogs { get; set; }
+        #endregion
 
     }
 }

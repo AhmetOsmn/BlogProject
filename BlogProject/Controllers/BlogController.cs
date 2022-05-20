@@ -11,7 +11,7 @@ namespace BlogProject.Controllers
         BlogManager blogManager = new(new EfBlogRepository());
         public IActionResult Index()
         {
-            var blogs = blogManager.GetBlogWithCategory();
+            var blogs = blogManager.GetBlogListWithCategory();
             return View(blogs);
         }
 
