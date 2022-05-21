@@ -11,6 +11,7 @@ namespace EntityLayer.Concrete
         public string Title { get; set; }
         public string Content { get; set; }
         public DateTime CommentDate { get; set; }
+        public int BlogScore { get; set; }
         public bool Status { get; set; }
 
         #region Relationships 
