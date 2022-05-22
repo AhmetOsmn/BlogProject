@@ -1,0 +1,16 @@
+﻿.container li {
+    margin-bottom: 15px;
+}
+
+    .container li div {
+        border: 1px solid gray;
+        display: flex;
+        flex-direction: column;
+        padding: 15px;
+        border-radius: 10px;
+    }
+
+    .container li div p{
+        font-size: large;
+        font-weight: bolder;
+    }
