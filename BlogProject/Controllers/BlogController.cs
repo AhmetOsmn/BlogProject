@@ -12,7 +12,6 @@ using System.Linq;
 
 namespace BlogProject.Controllers
 {
-    [AllowAnonymous]
     public class BlogController : Controller
     {
         readonly BlogManager blogManager = new(new EfBlogRepository());
@@ -83,7 +82,9 @@ namespace BlogProject.Controllers
             //blogManager.Delete(blog);
             return RedirectToAction("BlogListByWriter", "Blog");
         }
-        
+
+        #region EditBlog
+
         [HttpGet]
         public IActionResult EditBlog(int id)
         {
@@ -104,5 +105,8 @@ namespace BlogProject.Controllers
             blogManager.Update(blog);
             return RedirectToAction("BlogListByWriter");
         }
+
+        #endregion
+
     }
 }

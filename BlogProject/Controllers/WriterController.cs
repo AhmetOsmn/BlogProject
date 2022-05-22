@@ -1,6 +1,7 @@
 ﻿using BlogProject.Models;
 using BusinessLayer.Concrete;
 using BusinessLayer.ValidationsRules;
+using DataAccessLayer.Concrete;
 using DataAccessLayer.Concrete.EntityFramework;
 using EntityLayer.Concrete;
 using FluentValidation.Results;
@@ -8,60 +9,39 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.IO;
+using System.Linq;
 
 namespace BlogProject.Controllers
 {
     public class WriterController : Controller
     {
         WriterManager writerManager = new(new EfWriterRepository());
+
         public IActionResult Index()
         {
+            var userMail = User.Identity.Name;
+            ViewBag.UserMail = userMail;
             return View();
         }
 
-        public IActionResult WriterProfile()
-        {
-            return View();
-        }
+        #region EditProfile
 
-        public IActionResult WriterMail()
-        {
-            return View();
-        }
-
-        [AllowAnonymous]
-        public IActionResult Test()
-        {
-            return View();
-        }
-
-        [AllowAnonymous]
-        public PartialViewResult WriterNavbarPartial()
-        {
-            return PartialView();
-        }
-
-        [AllowAnonymous]
-        public PartialViewResult WriterFooterPartial()
-        {
-            return PartialView();
-        }
-
-        [AllowAnonymous]
         [HttpGet]
         public IActionResult WriterEditProfile()
         {
-            Writer writer = writerManager.GetById(1);
+            Context context = new();
+            var userMail = User.Identity.Name;
+            var writerId = context.Writers.Where(x => x.Mail == userMail).Select(y => y.Id).FirstOrDefault();
+            Writer writer = writerManager.GetById(writerId);
             return View(writer);
         }
 
-        [AllowAnonymous]
         [HttpPost]
         public IActionResult WriterEditProfile(Writer writer)
         {
             WriterValidator validator = new();
             ValidationResult result = validator.Validate(writer);
-            if(result.IsValid)
+            if (result.IsValid)
             {
                 writerManager.Update(writer);
                 return RedirectToAction("Index", "Dashboard");
@@ -76,6 +56,10 @@ namespace BlogProject.Controllers
             return View();
         }
 
+        #endregion
+
+        #region AddWriter
+
         [AllowAnonymous]
         [HttpGet]
         public IActionResult AddWriter()
@@ -88,11 +72,11 @@ namespace BlogProject.Controllers
         public IActionResult AddWriter(CreateWriterModel createWriterModel)
         {
             Writer writer = new();
-            if(createWriterModel.Image != null)
+            if (createWriterModel.Image != null)
             {
                 var extension = Path.GetExtension(createWriterModel.Image.FileName);
                 var newImageName = Guid.NewGuid() + extension;
-                var location = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/WritersImagesFiles" ,newImageName);
+                var location = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/WritersImagesFiles", newImageName);
                 var stream = new FileStream(location, FileMode.Create);
                 createWriterModel.Image.CopyTo(stream);
                 writer.Image = newImageName;
@@ -102,8 +86,24 @@ namespace BlogProject.Controllers
             writer.Password = createWriterModel.Password;
             writer.Status = true;
             writer.About = createWriterModel.About;
-            writerManager.Add(writer);  
+            writerManager.Add(writer);
             return RedirectToAction("Index", "Dashboard");
         }
+
+        #endregion
+
+
+        [AllowAnonymous]
+        public PartialViewResult WriterNavbarPartial()
+        {
+            return PartialView();
+        }
+
+        [AllowAnonymous]
+        public PartialViewResult WriterFooterPartial()
+        {
+            return PartialView();
+        }
+
     }
 }

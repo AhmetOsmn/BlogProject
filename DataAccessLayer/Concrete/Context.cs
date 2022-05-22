@@ -10,6 +10,20 @@ namespace DataAccessLayer.Concrete
         {
             optionsBuilder.UseSqlServer("server=DESKTOP-BHGN45D\\AHMETSDBSERVER;database=(MY)CoreBlogDb; integrated security=true");
         }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+             modelBuilder.Entity<Message2>()
+                .HasOne(x => x.SenderWriter)
+                .WithMany(y => y.SenderWriter)
+                .HasForeignKey(z => z.SenderId)
+                .OnDelete(DeleteBehavior.ClientSetNull);
+
+             modelBuilder.Entity<Message2>()
+                .HasOne(x => x.ReceiverWriter)
+                .WithMany(y => y.ReceiverWriter)
+                .HasForeignKey(z => z.ReceiverId)
+                .OnDelete(DeleteBehavior.ClientSetNull);
+        }
 
         public DbSet<About> Abouts { get; set; }
         public DbSet<Blog> Blogs{ get; set; }
@@ -21,5 +35,6 @@ namespace DataAccessLayer.Concrete
         public DbSet<BlogRayting> BlogRaytings{ get; set; }
         public DbSet<Notification> Notifications{ get; set; }
         public DbSet<Message> Messages{ get; set; }
+        public DbSet<Message2> Message2s{ get; set; }
     }
 }
