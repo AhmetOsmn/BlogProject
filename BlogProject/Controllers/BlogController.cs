@@ -4,7 +4,6 @@ using DataAccessLayer.Concrete;
 using DataAccessLayer.Concrete.EntityFramework;
 using EntityLayer.Concrete;
 using FluentValidation.Results;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
@@ -25,9 +24,9 @@ namespace BlogProject.Controllers
             return View(blogs);
         }
 
-        #region BlogReadAll
+        #region BlogDetails
 
-        public IActionResult BlogReadAll(int id)
+        public IActionResult BlogDetails(int id)
         {
             ViewBag.Id = id;
             List<Blog> blogs = blogManager.GetBlogById(id);
@@ -128,7 +127,7 @@ namespace BlogProject.Controllers
             var userMail = User.Identity.Name;
             var writerId = context.Writers.Where(x => x.Mail == userMail).Select(y => y.Id).FirstOrDefault();
 
-            blog.WriterId= writerId;
+            blog.WriterId = writerId;
             blog.CreateDate = DateTime.Parse(DateTime.Now.ToShortDateString());
             blog.Status = true;
             blogManager.Update(blog);

@@ -4,7 +4,7 @@ namespace BlogProject.Controllers
 {
     public class ErrorPageController : Controller
     {
-        public IActionResult Error1(int code)
+        public IActionResult Error1()
         {
 
             return View();

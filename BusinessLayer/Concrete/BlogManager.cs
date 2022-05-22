@@ -24,7 +24,7 @@ namespace BusinessLayer.Concrete
         {
             _blogDal.Delete(item);
         }
-        
+
         public void Update(Blog item)
         {
             _blogDal.Update(item);
@@ -32,9 +32,9 @@ namespace BusinessLayer.Concrete
 
         public List<Blog> GetAll()
         {
-            return _blogDal.GetAll();   
+            return _blogDal.GetAll();
         }
-        
+
         public Blog GetById(int id)
         {
             return _blogDal.GetById(id);

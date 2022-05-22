@@ -4,7 +4,7 @@ using EntityLayer.Concrete;
 
 namespace DataAccessLayer.Concrete.EntityFramework
 {
-    public class EfContactRepository: GenericRepository<Contact>, IContactDal
+    public class EfContactRepository : GenericRepository<Contact>, IContactDal
     {
     }
 }

@@ -7,13 +7,13 @@ using System.Linq;
 
 namespace DataAccessLayer.Concrete.EntityFramework
 {
-    public class EfMessage2Repository : GenericRepository<Message2> ,IMessage2Dal
+    public class EfMessage2Repository : GenericRepository<Message2>, IMessage2Dal
     {
         public List<Message2> GetMessageListByWriter(int id)
         {
             using (Context context = new())
             {
-                return context.Message2s.Include(x => x.SenderWriter).Where(x => x.ReceiverId== id).ToList();
+                return context.Message2s.Include(x => x.SenderWriter).Where(x => x.ReceiverId == id).ToList();
             }
         }
     }

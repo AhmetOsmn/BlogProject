@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BlogProject.ViewComponents.Blog
 {
-    public class WriterLastBlog: ViewComponent
+    public class WriterLastBlog : ViewComponent
     {
         BlogManager blogManager = new(new EfBlogRepository());
 

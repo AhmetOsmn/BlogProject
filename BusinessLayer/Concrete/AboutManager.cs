@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace BusinessLayer.Concrete
 {
-    public class AboutManager: IAboutService
+    public class AboutManager : IAboutService
     {
         readonly IAboutDal _aboutDal;
 
@@ -21,7 +21,7 @@ namespace BusinessLayer.Concrete
 
         public void Delete(About item)
         {
-            _aboutDal.Delete(item); 
+            _aboutDal.Delete(item);
         }
 
         public List<About> GetAll()

@@ -4,7 +4,7 @@ using EntityLayer.Concrete;
 
 namespace DataAccessLayer.Concrete.EntityFramework
 {
-    public class EfCategoryRepository: GenericRepository<Category>, ICategoryDal
+    public class EfCategoryRepository : GenericRepository<Category>, ICategoryDal
     {
     }
 }

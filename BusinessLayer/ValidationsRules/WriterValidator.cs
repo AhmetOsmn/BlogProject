@@ -3,7 +3,7 @@ using FluentValidation;
 
 namespace BusinessLayer.ValidationsRules
 {
-    public class WriterValidator: AbstractValidator<Writer>
+    public class WriterValidator : AbstractValidator<Writer>
     {
         public WriterValidator()
         {

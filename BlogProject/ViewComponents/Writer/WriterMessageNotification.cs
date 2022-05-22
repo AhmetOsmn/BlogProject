@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BlogProject.ViewComponents.Writer
 {
-    public class WriterMessageNotification: ViewComponent
+    public class WriterMessageNotification : ViewComponent
     {
         readonly Message2Manager messageManager = new(new EfMessage2Repository());
         public IViewComponentResult Invoke()
