@@ -12,9 +12,9 @@ namespace BlogProject.Areas.Admin.Controllers
     public class CategoryController : Controller
     {
         CategoryManager categoryManager = new(new EfCategoryRepository());
-        public IActionResult Index(int page= 1)
+        public IActionResult Index(int page = 1)
         {
-            var values = categoryManager.GetAll().ToPagedList(page,10);
+            var values = categoryManager.GetAll().ToPagedList(page, 10);
             return View(values);
         }
 
@@ -47,6 +47,18 @@ namespace BlogProject.Areas.Admin.Controllers
                 }
             }
             return View();
+        }
+
+        #endregion
+
+        #region DeleteCategory
+
+        public IActionResult DeleteCategory(int id)
+        {
+            Category category = categoryManager.GetById(id);
+            category.Status = false;
+            categoryManager.Update(category);
+            return RedirectToAction("Index", "Category");
         }
 
         #endregion
