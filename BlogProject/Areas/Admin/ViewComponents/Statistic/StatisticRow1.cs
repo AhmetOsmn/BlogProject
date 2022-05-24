@@ -26,6 +26,3 @@ namespace BlogProject.Areas.Admin.ViewComponents.Statistic
         }
     }
 }
-
-// https://api.openweathermap.org/data/2.5/weather?lat=41.0096334&lon=28.9651646&appid=ed97171ae2eadfdb4b7a813a9b8da3d4 istanbul icin hava durumu - JSON
-// https://api.openweathermap.org/data/2.5/weather?q=istanbul&mode=xml&appid=ed97171ae2eadfdb4b7a813a9b8da3d4 istanbul icin hava durumu - XML
