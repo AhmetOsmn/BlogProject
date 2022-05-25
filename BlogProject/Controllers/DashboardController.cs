@@ -8,10 +8,16 @@ namespace BlogProject.Controllers
     {
         public IActionResult Index()
         {
-            Context contex = new();
-            ViewBag.v1 = contex.Blogs.Count().ToString();
-            ViewBag.v2 = contex.Blogs.Where(x => x.WriterId == 1).Count().ToString();
-            ViewBag.v3 = contex.Categories.Count().ToString();
+            Context context = new();
+
+            var userName = User.Identity.Name;
+            ViewBag.userName = userName;
+            var userMail = context.Users.Where(x => x.UserName == userName).Select(y => y.Email).FirstOrDefault();
+            var writerId = context.Writers.Where(x => x.Mail == userMail).Select(y => y.Id).FirstOrDefault();
+
+            ViewBag.v1 = context.Blogs.Count().ToString();
+            ViewBag.v2 = context.Blogs.Where(x => x.WriterId == writerId).Count().ToString();
+            ViewBag.v3 = context.Categories.Count().ToString();
             return View();
         }
     }

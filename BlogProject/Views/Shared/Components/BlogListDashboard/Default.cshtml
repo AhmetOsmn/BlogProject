@@ -18,26 +18,28 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (Blog item in Model)
+                            @{int count = Model.Count;}
+                            @for (var i = 0; i < 10; i++)
                             {
                                 <tr>
                                     <td>
-                                        <img src="@item.Image" class="mr-2" alt="image">
+                                        <img src="@Model[count - i -1].Image" class="mr-2" alt="image">
                                     </td>
                                     <td>
-                                        @item.Title
+                                        @Model[count - i - 1].Title
                                     </td>
                                     <td>
-                                        <label class="badge badge-gradient-success">@item.Category.Name</label>
+                                        <label class="badge badge-gradient-success">@Model[count - i -1].Category.Name</label>
                                     </td>
                                     <td>
-                                        @(((DateTime)item.CreateDate).ToString("dd-MMM-yyyy"))
+                                        @(((DateTime)Model[count - i - 1].CreateDate).ToString("dd-MMM-yyyy"))
                                     </td>
                                     <td>
-                                        <a href="/Blog/BlogReadAll/@item.Id" class="btn btn-warning">Detaylar</a>
+                                        <a href="/Blog/BlogReadAll/@Model[count - i - 1].Id" class="btn btn-warning">Detaylar</a>
                                     </td>
                                 </tr>
                             }
+                       
                         </tbody>
                     </table>
                 </div>

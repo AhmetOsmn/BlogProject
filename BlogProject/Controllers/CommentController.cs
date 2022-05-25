@@ -1,12 +1,14 @@
 ﻿using BusinessLayer.Concrete;
 using DataAccessLayer.Concrete.EntityFramework;
 using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 
 namespace BlogProject.Controllers
 {
+    [AllowAnonymous]
     public class CommentController : Controller
     {
         readonly CommentManager commentManager = new(new EfCommentRepository());

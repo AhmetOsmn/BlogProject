@@ -1,11 +1,13 @@
 ﻿using BusinessLayer.Concrete;
 using DataAccessLayer.Concrete.EntityFramework;
 using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 
 namespace BlogProject.Controllers
 {
+    [AllowAnonymous]
     public class ContactController : Controller
     {
         readonly ContactManager contactManager = new(new EfContactRepository());
