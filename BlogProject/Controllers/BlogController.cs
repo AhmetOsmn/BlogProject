@@ -4,6 +4,7 @@ using DataAccessLayer.Concrete;
 using DataAccessLayer.Concrete.EntityFramework;
 using EntityLayer.Concrete;
 using FluentValidation.Results;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
@@ -18,14 +19,17 @@ namespace BlogProject.Controllers
         readonly CategoryManager categoryManager = new(new EfCategoryRepository());
         Context context = new();
 
+        [AllowAnonymous]
         public IActionResult Index()
         {
             List<Blog> blogs = blogManager.GetBlogListWithCategory();
             return View(blogs);
         }
 
+
         #region BlogDetails
 
+        [AllowAnonymous]
         public IActionResult BlogDetails(int id)
         {
             ViewBag.Id = id;

@@ -25,7 +25,12 @@ namespace BlogProject
         {
             services.AddDbContext<Context>();
 
-            services.AddIdentity<User,Role>().AddEntityFrameworkStores<Context>();
+            services.AddIdentity<User,Role>(x => {
+
+                x.Password.RequireUppercase = false;
+                x.Password.RequireNonAlphanumeric = false;
+
+            }).AddEntityFrameworkStores<Context>();
 
             services.AddControllersWithViews();
 

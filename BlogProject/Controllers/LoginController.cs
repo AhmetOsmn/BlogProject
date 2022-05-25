@@ -1,49 +1,47 @@
-﻿using DataAccessLayer.Concrete;
+﻿using BlogProject.Models;
 using EntityLayer.Concrete;
-using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace BlogProject.Controllers
 {
+    [AllowAnonymous]
     public class LoginController : Controller
     {
-        [AllowAnonymous]
+        private readonly SignInManager<User> _signInManager;
+
+        public LoginController(SignInManager<User> signInManager)
+        {
+            _signInManager = signInManager;
+        }
+
         public IActionResult Index()
         {
             return View();
         }
 
         [HttpPost]
-        [AllowAnonymous]
-        public async Task<IActionResult> Index(Writer writer)
+        public async Task<IActionResult> Index(UserSignInViewModel user)
         {
-            Context context = new();
-
-            var dataValue = context.Writers.FirstOrDefault(x => x.Mail == writer.Mail && x.Password == writer.Password);
-
-            if (dataValue != null)
+            if (ModelState.IsValid)
             {
-                List<Claim> claims = new List<Claim>
-               {
-                   new Claim(ClaimTypes.Name, writer.Mail),
-               };
-
-                ClaimsIdentity userIdentity = new(claims, "a");
-                ClaimsPrincipal principal = new(userIdentity);
-                await HttpContext.SignInAsync(principal);
-                return RedirectToAction("Index", "Dashboard");
+                var result = await _signInManager.PasswordSignInAsync(user.username, user.password, false, true);
+                if(result.Succeeded)
+                {
+                    return RedirectToAction("Index", "Dashboard");
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Login");
+                }
             }
-            else
-            {
-                return View();
-            }
-
+            return View();
         }
+
+
+
+
     }
 }
