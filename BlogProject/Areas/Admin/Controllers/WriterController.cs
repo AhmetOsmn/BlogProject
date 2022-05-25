@@ -22,6 +22,29 @@ namespace BlogProject.Areas.Admin.Controllers
             return Json(jsonWriter);
         }
 
+        [HttpPost]
+        public IActionResult AddWriter(GetWriterViewModel model)
+        {
+            writerViewModels.Add(model);
+            var jsonWriters = JsonConvert.SerializeObject(model);
+            return Json(jsonWriters);
+        }
+
+        public IActionResult DeleteWriter(int id)
+        {
+            var writer = writerViewModels.FirstOrDefault(x => x.Id == id);
+            writerViewModels.Remove(writer);
+            return Json(writer);
+        }
+        
+        public IActionResult UpdateWriter(GetWriterViewModel model)
+        {
+            var writer = writerViewModels.FirstOrDefault(x => x.Id == model.Id);
+            writer.Name = model.Name;
+            var jsonWriter = JsonConvert.SerializeObject(writer);
+            return Json(jsonWriter);
+        }
+
         public IActionResult WriterList()
         {
             var jsonWriters = JsonConvert.SerializeObject(writerViewModels);

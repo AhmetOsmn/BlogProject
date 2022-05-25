@@ -7,33 +7,53 @@
 <br />
 
 <div class="row">
-    <div class="col-md-5">
+    <div class="col-md-2">
         <button type="button" id="btngetlist" class="btn btn-outline-primary">Yazar Listesi</button>
     </div>
-    <div class="col-md-2"></div>
-    <div class="col-md-5">
+    <div class="col-md-2">
         <button type="button" id="btngetbyid" class="btn btn-outline-success">Yazar Getir</button>
+    </div>
+    <div class="col-md-2">
+        <button type="button" id="btnaddwriter" class="btn btn-info">Yazar Ekle</button>
+    </div>
+    <div class="col-md-3">
+        <button type="button" id="btndeletewriter" class="btn btn-danger">Yazar Sil</button>
+    </div>
+    <div class="col-md-3">
+        <button type="button" id="btnupdatewriter" class="btn btn-warning">Yazar Güncelle</button>
     </div>
 </div>
 <br />
 <br />
 <div class="row">
 
-    <div id="writerlist" class="col-md-5">
+    <div class="col-md-2" id="writerlist">
         Buraya yazarlar gelecek
     </div>
-    <div class="col-md-2"></div>
-
-    <div class="col-md-5">
-
+    <div class="col-md-2">
         <div id="getwriter">
         </div>
-
         <div>
             <input type="text" id="writerid" placeholder="Buraya yazar id girin" class="form-control" />
         </div>
     </div>
+    <div class="col-md-2">
+        <input type="text" class="form-control" id="txtwriterid" placeholder="Yazar ID" />
+        <br />
+        <input type="text" class="form-control" id="txtwritername" placeholder="Yazar Adı" />
+    </div>
+    <div class="col-md-3">
+        <input type="text" class="form-control" id="txtdeletewriterid" placeholder="Yazar ID" />
+    </div>
+    <div class="col-md-3">
+        <input type="text" class="form-control" id="txtupdatewriterid" placeholder="Yazar ID" />
+        <br />
+        <input type="text" class="form-control" id="txtupdatewritername" placeholder="Yeni isim" />
+    </div>
 </div>
+
+
+
 
 @section scripts {
 <script>
@@ -69,12 +89,58 @@
             data: {writerid: id},
             success: function(func) {
                 let writer = jQuery.parseJSON(func);
-                console.log(writer)
 
                 let getvalue=`<table class=table table-bordered> <tr><th>Yazar ID</th><th>Yazar Adı</th></tr><tr><td>${writer.Id}</td><td>${writer.Name}</td></tr></table>`;
                 $("#getwriter").html(getvalue)
             }
         })
     })
+
+    $("#btnaddwriter").click(function () {
+        let writer = {
+            Id: $("#txtwriterid").val(),
+            Name: $("#txtwritername").val()
+        };
+
+        $.ajax({
+            type: "post",
+            url: "/Admin/Writer/AddWriter/",
+            data: writer,
+            success: function (func) {
+                let result = jQuery.parseJSON(func);
+                alert("Yazar ekleme başarılı");
+            }
+        });
+    });
+
+    $("#btndeletewriter").click(x => {
+         let id = $("#txtdeletewriterid").val();
+
+         $.ajax({
+             url: "/Admin/Writer/DeleteWriter/" + id,
+             type: "post",
+             dataType: "json",
+             success: function (func) {
+                alert("Yazar silme başarılı");
+            }
+         })
+    });
+
+    $("#btnupdatewriter").click(function() {
+        let writer = {
+            Id: $("#txtupdatewriterid").val(),
+            Name: $("#txtupdatewritername").val()
+        };
+
+        $.ajax({
+            type:"post",
+            url:"/Admin/Writer/UpdateWriter/",
+            data: writer,
+            success: function(func) {
+                alert("Güncellemek yapildi");
+            }
+        })
+    })
+
 </script>
 }
