@@ -5,15 +5,13 @@ using Microsoft.AspNetCore.Mvc;
 namespace BlogProject.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class BlogController : Controller
+    public class CommentController : Controller
     {
-
-        BlogManager blogManager = new(new EfBlogRepository());
-
+        CommentManager commentManager = new(new EfCommentRepository());
         public IActionResult Index()
         {
-            var blogs = blogManager.GetBlogListWithCategory();
-            return View(blogs);
+            var comments = commentManager.GetAllWithBlog();
+            return View(comments);
         }
     }
 }

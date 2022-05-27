@@ -1,0 +1,22 @@
+﻿@using BlogProject.Areas.Admin.Models
+@model GetRoleViewModel
+
+@{
+    ViewData["Title"] = "AddRole";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayout.cshtml";
+}
+
+<h1>Yeni Rol Ekleme Sayfası</h1>
+
+<form method="post">
+    <div class="form-group">
+        <label>Rol Başlığı</label>
+        <input type="text" name="Name" class="form-control" />
+    </div>
+
+    <div asp-validation-summary="ModeOnly">
+
+    </div>
+
+    <button class="btn btn-primary">Kaydet</button>
+</form>
