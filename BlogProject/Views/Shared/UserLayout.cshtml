@@ -40,7 +40,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <i class="fab fa-linode"></i> AOS
                     </a>
                 </div>
-                @await Html.PartialAsync("Partial2")
+                @if (!User.Identity.IsAuthenticated)
+                {
+                    @await Html.PartialAsync("Partial2")
+                }
             </div>
         </div>
 

@@ -8,5 +8,6 @@ namespace DataAccessLayer.Abstract
     {
         List<Blog> GetListWithCategory();
         List<Blog> GetListWithCategoryByWriter(int id);
+        int GetCommentCount(int id);
     }
 }

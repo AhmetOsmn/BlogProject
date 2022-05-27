@@ -20,10 +20,30 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/Contact/Index">İletişim</a>
                 </li>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    if (User.IsInRole("Admin"))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Admin/Widget/Index">Dashboard</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Dashboard/Index">Dashboard</a>
+                        </li>
+                    }
+                }
                 <li class="nav-item">
                     <a class="nav-link" href="~/ToDo/Index" href="contact.html">ToDo List</a>
                 </li>
-
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Login/Logout">Çıkış Yap</a>
+                    </li>
+                }
             </ul>
         </div>
     </nav>

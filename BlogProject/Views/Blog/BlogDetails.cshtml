@@ -29,21 +29,16 @@
                                                 <i class="far fa-calendar-alt"></i> @(((DateTime)item.CreateDate).ToString("dd-MMM-yyyy"))
                                             </a>
                                         </li>
-                                        <li class="mx-2">
-                                            <a href="#">
-                                                <i class="far fa-thumbs-up"></i> 0 Beğeni
-                                            </a>
-                                        </li>
+                                        <li class="mx-2"></li>
                                         <li>
                                             <a href="#">
-                                                <i class="far fa-comment"></i> 0 Yorum
+                                                <i class="far fa-comment"></i> @ViewBag.CommentCount Yorum
                                             </a>
                                         </li>
 
                                     </ul>
                                 </div>
                             </div>
-
                             <h3>
                                 <a>@item.Title </a>
                             </h3>
@@ -54,7 +49,7 @@
                         </div>
                     }
                     @await Component.InvokeAsync("CommentListByBlog",new {id = ViewBag.Id})
-                    @await Html.PartialAsync("~/Views/Comment/PartialAddComment.cshtml")
+                    @await Html.PartialAsync("~/Views/Comment/PartialAddComment.cshtml", new {id = ViewBag.Id})
                 </div>
                 <aside class="col-lg-4 agileits-w3ls-right-blog-con text-right">
                     <div class="right-blog-info text-left">
@@ -62,29 +57,13 @@
                             <img src="~/CoreBlogTema/web/images/banner1.jpg" class="img-fluid" alt="">
                         </div>
                         <h2>Mail Bültenine abone olun</h2>
+
                         @await Html.PartialAsync("~/Views/NewsLetter/SubscribeMail.cshtml")
 
                         @await Component.InvokeAsync("CategoryList")
 
-                        @await Component.InvokeAsync("WriterLastBlog")
+                        @await Component.InvokeAsync("WriterLastBlog",new {id = ViewBag.WriterId})
 
-                        <div class="single-gd tech-btm">
-                            <h4>Son eklenen post</h4>
-                            <div class="blog-grids">
-                                <div class="blog-grid-left">
-                                    <a href="single.html">
-                                        <img src="~/CoreBlogTema/web/images/b1.jpg" class="img-fluid" alt="">
-                                    </a>
-                                </div>
-                                <div class="blog-grid-right">
-
-                                    <h5>
-                                        <a href="single.html">Pellentesque dui, non felis. Maecenas male</a>
-                                    </h5>
-                                </div>
-                                <div class="clearfix"> </div>
-                            </div>
-                        </div>
                     </div>
                 </aside>
             </div>

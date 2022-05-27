@@ -13,11 +13,12 @@
             </div>
             <div class="col-md-7 blog-grid-right">
                 <h5>
-                    <a href="/Blog/BlogReadAll/@item.Id">@item.Content.Substring(0,item.Content.Substring(0,50).LastIndexOf(" "))...</a>
+                    @*<a href="/Blog/BlogReadAll/@item.Id">@item.Content.Substring(0,item.Content.Substring(0,50).LastIndexOf(" "))...</a>*@
+                    <a href="/Blog/BlogDetails/@item.Id" style="color: #fff">@item.Title</a>
                 </h5>
                 <div class="sub-meta">
                     <span>
-                        <i class="far fa-clock"></i> @(((DateTime)item.CreateDate).ToString("dd-MMM-yyyy"))
+                        <i class="far fa-clock"></i> @(((DateTime)item.CreateDate).ToString("dd-MM-yyyy"))
                     </span>
                 </div>
             </div>

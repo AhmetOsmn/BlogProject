@@ -33,7 +33,9 @@ namespace BlogProject.Controllers
         public IActionResult BlogDetails(int id)
         {
             ViewBag.Id = id;
+            ViewBag.CommentCount = blogManager.GetCommentCount(id);
             List<Blog> blogs = blogManager.GetBlogById(id);
+            ViewBag.WriterId = blogs[0].WriterId;
             return View(blogs);
         }
 

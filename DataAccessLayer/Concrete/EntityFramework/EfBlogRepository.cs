@@ -9,6 +9,14 @@ namespace DataAccessLayer.Concrete.EntityFramework
 {
     public class EfBlogRepository : GenericRepository<Blog>, IBlogDal
     {
+        public int GetCommentCount(int id)
+        {
+            using (Context context = new())
+            {
+                return context.Comments.Where(x => x.BlogId == id).Count();
+            }
+        }
+
         public List<Blog> GetListWithCategory()
         {
             using (Context context = new())

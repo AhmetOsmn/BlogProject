@@ -11,5 +11,6 @@ namespace BusinessLayer.Abstract
         List<Blog> GetBlogListByWriter(int id);
         List<Blog> GetBlogById(int id);
         List<Blog> GetLast3Blog();
+        int GetCommentCount(int id);
     }
 }
