@@ -105,9 +105,9 @@ namespace BlogProject.Controllers
         public IActionResult DeleteBlog(int id)
         {
             Blog blog = blogManager.GetById(id);
-            blog.Status = false;
-            blogManager.Update(blog);
-            //blogManager.Delete(blog);
+            //blog.Status = false;
+            //blogManager.Update(blog);
+            blogManager.Delete(blog);
             return RedirectToAction("BlogListByWriter", "Blog");
         }
 

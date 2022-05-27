@@ -1,5 +1,6 @@
 ﻿using BlogProject.Areas.Admin.Models;
 using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Linq;
 namespace BlogProject.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class WriterController : Controller
     {
         public IActionResult Index()

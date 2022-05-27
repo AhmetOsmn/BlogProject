@@ -2,6 +2,7 @@
 using DataAccessLayer.Concrete;
 using DataAccessLayer.Concrete.EntityFramework;
 using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Linq;
@@ -9,6 +10,7 @@ using System.Linq;
 namespace BlogProject.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class MessageController : Controller
     {
         Message2Manager message2Manager = new(new EfMessage2Repository());
@@ -33,6 +35,8 @@ namespace BlogProject.Areas.Admin.Controllers
             return View(values);
         }
 
+        #region Send Message
+
         [HttpGet]
         public IActionResult SendMessage()
         {
@@ -53,5 +57,8 @@ namespace BlogProject.Areas.Admin.Controllers
             message2Manager.Add(message);
             return RedirectToAction("Sendbox");
         }
+
+        #endregion
+
     }
 }

@@ -14,7 +14,7 @@
     @Html.HiddenFor(x => x.WriterId)
     @Html.HiddenFor(x => x.CreateDate)
     @Html.Label("Blog Id")
-    @Html.TextBoxFor(x => x.Id, new { @class = "form-control"})
+    @Html.TextBoxFor(x => x.Id, new { @readonly = "readonly", @class ="form-control" } )
     <br />
     @Html.Label("Blog Başlığı")
     @Html.TextBoxFor(x => x.Title, new { @class = "form-control"})

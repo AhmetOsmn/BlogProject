@@ -1,6 +1,7 @@
 ﻿using BlogProject.Areas.Admin.Models;
 using ClosedXML.Excel;
 using DataAccessLayer.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.IO;
@@ -9,6 +10,7 @@ using System.Linq;
 namespace BlogProject.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class RaporController : Controller
     {
         public IActionResult ExportBlogListDynamicExcel()

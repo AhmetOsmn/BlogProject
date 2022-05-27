@@ -3,7 +3,6 @@ using BusinessLayer.Concrete;
 using DataAccessLayer.Concrete;
 using DataAccessLayer.Concrete.EntityFramework;
 using EntityLayer.Concrete;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -55,7 +54,7 @@ namespace BlogProject.Controllers
             values.NameSurname = model.NameSurname;
             values.Email = model.Mail;
             values.ImageUrl = model.ImageUrl;
-            values.PasswordHash = _userManager.PasswordHasher.HashPassword(values, model.Password);
+            //values.PasswordHash = _userManager.PasswordHasher.HashPassword(values, model.Password);
             var result = await _userManager.UpdateAsync(values);
             return RedirectToAction("Index", "Dashboard");
         }
@@ -64,14 +63,12 @@ namespace BlogProject.Controllers
 
         #region AddWriter
 
-        
         [HttpGet]
         public IActionResult AddWriter()
         {
             return View();
         }
 
-        //[AllowAnonymous]
         [HttpPost]
         public IActionResult AddWriter(CreateWriterModel createWriterModel)
         {

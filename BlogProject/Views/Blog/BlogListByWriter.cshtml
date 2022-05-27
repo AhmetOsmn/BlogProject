@@ -25,14 +25,14 @@
        <tr>
            <th>@item.Id</th>
            <td>@item.Title</td>
-           <td>@(((DateTime)item.CreateDate).ToString("dd-MMM-yyyy"))</td>
+           <td>@(((DateTime)item.CreateDate).ToString("dd-MM-yyyy"))</td>
            <td>@item.Category.Name</td>
            <td>@item.Status</td>
            <td></td>
            <td></td>
            <td></td>
            <td><a href="/Blog/EditBlog/@item.Id" class="btn btn-primary">Düzenle</a></td>
-           <td><a href="/Blog/BlogDelete/@item.Id" class="btn btn-danger">Sil</a></td>
+           <td><a href="/Blog/DeleteBlog/@item.Id" class="btn btn-danger">Sil</a></td>
        </tr>
    }
 </table>
