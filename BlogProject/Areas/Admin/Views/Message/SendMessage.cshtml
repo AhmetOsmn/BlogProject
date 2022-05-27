@@ -8,49 +8,12 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>INSPINIA | Mailbox</title>
-
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
-    <link href="css/plugins/iCheck/custom.css" rel="stylesheet">
-    <link href="css/plugins/summernote/summernote-bs4.css" rel="stylesheet">
-    <link href="css/animate.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-
-</head>
-
 <body>
     <div class="wrapper wrapper-content">
         <div class="row">
-            @*Component yapisina tasinacak*@
-            <div class="col-lg-3">
-                <div class="ibox ">
-                    <div class="ibox-content mailbox-content">
-                        <div class="file-manager">
-                            <a class="btn btn-block btn-primary compose-mail" href="mail_compose.html">Yeni Mesaj Oluştur</a>
-                            <div class="space-25"></div>
-                            <ul class="folder-list m-b-md" style="padding: 0">
-                                <li><a href="/Admin/Message/Inbox/"> <i class="fa fa-inbox "></i> Gelen Mesajlar </a></li>
-                                <li><a href="/Admin/Message/Sendbox/"> <i class="fa fa-envelope-o"></i> Giden Mesajlar</a></li>
-                            </ul>
-                            <h5>Kategoriler</h5>
-                            <ul class="category-list" style="padding: 0">
-                                <li><a href="#"> <i class="fa fa-circle text-navy"></i> İş </a></li>
-                                <li><a href="#"> <i class="fa fa-circle text-danger"></i> Dökümanlar</a></li>
-                                <li><a href="#"> <i class="fa fa-circle text-primary"></i> Sosyal</a></li>
-                                <li><a href="#"> <i class="fa fa-circle text-info"></i> Tanıtımlar</a></li>
-                                <li><a href="#"> <i class="fa fa-circle text-warning"></i> Talepler</a></li>
-                            </ul>
-                            <div class="clearfix"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
+            @await Component.InvokeAsync("MessageBoxNav")
+
             <div class="col-lg-9 animated fadeInRight">
                 <div class="mail-box-header">
                     <div class="float-right tooltip-demo">
@@ -80,9 +43,9 @@
                                 <label class="col-sm-2 col-form-label">Mesajınız:</label>
                                 <textarea class="form-control" name="Details" rows="4" cols="10"></textarea>
                             </div>
-                            
+
                             <div class="mail-body text-right tooltip-demo">
-                                <button  class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Mesajı Gönder"><i class="fa fa-reply"></i> Gönder</button>
+                                <button class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Mesajı Gönder"><i class="fa fa-reply"></i> Gönder</button>
                                 <a href="mailbox.html" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Mesajı iptal et"><i class="fa fa-times"></i> İptal</a>
                                 <a href="mailbox.html" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Taslak olarak kaydet"><i class="fa fa-pencil"></i> Taslak</a>
                             </div>
