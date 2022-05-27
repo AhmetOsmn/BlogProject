@@ -13,7 +13,7 @@ namespace BusinessLayer.ValidationsRules
 
             RuleFor(x => x.Content).NotEmpty().WithMessage("Blog içerik kısmı boş geçilemez.");
             RuleFor(x => x.Content).MaximumLength(350).WithMessage("En fazla 350 karakter giriniz.");
-            RuleFor(x => x.Content).MinimumLength(2).WithMessage("En az 2 karakter giriniz.");
+            RuleFor(x => x.Content).MinimumLength(130).WithMessage("En az 2 karakter giriniz.");
 
             RuleFor(x => x.Image).NotEmpty().WithMessage("Blog görseli kısmı boş geçilemez.");
         }

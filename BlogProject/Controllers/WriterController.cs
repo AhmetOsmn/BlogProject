@@ -1,14 +1,14 @@
 ﻿using BlogProject.Models;
 using BusinessLayer.Concrete;
-using BusinessLayer.ValidationsRules;
+using DataAccessLayer.Concrete;
 using DataAccessLayer.Concrete.EntityFramework;
 using EntityLayer.Concrete;
-using FluentValidation.Results;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace BlogProject.Controllers
@@ -17,6 +17,7 @@ namespace BlogProject.Controllers
     {
         private readonly WriterManager writerManager = new(new EfWriterRepository());
         private readonly UserManager userManager = new(new EfUserRepository());
+        Context context = new();
 
         private readonly UserManager<User> _userManager;
 
@@ -51,10 +52,10 @@ namespace BlogProject.Controllers
         public async Task<IActionResult> WriterEditProfile(UserUpdateViewModel model)
         {
             var values = await _userManager.FindByNameAsync(User.Identity.Name);
-            values.Email = model.Mail;
             values.NameSurname = model.NameSurname;
+            values.Email = model.Mail;
             values.ImageUrl = model.ImageUrl;
-            values.UserName = model.UserName;
+            values.PasswordHash = _userManager.PasswordHasher.HashPassword(values, model.Password);
             var result = await _userManager.UpdateAsync(values);
             return RedirectToAction("Index", "Dashboard");
         }
@@ -63,14 +64,14 @@ namespace BlogProject.Controllers
 
         #region AddWriter
 
-        [AllowAnonymous]
+        
         [HttpGet]
         public IActionResult AddWriter()
         {
             return View();
         }
 
-        [AllowAnonymous]
+        //[AllowAnonymous]
         [HttpPost]
         public IActionResult AddWriter(CreateWriterModel createWriterModel)
         {
@@ -96,13 +97,17 @@ namespace BlogProject.Controllers
         #endregion
 
 
-        [AllowAnonymous]
         public PartialViewResult WriterNavbarPartial()
         {
+            var userName = User.Identity.Name;
+            var nameSurname = context.Users.Where(x => x.UserName == userName).Select(y => y.NameSurname).FirstOrDefault();
+            var email = context.Users.Where(x => x.UserName == userName).Select(y => y.Email).FirstOrDefault();
+            ViewBag.nameSurname = nameSurname;
+            ViewBag.email = email;
+
             return PartialView();
         }
 
-        [AllowAnonymous]
         public PartialViewResult WriterFooterPartial()
         {
             return PartialView();

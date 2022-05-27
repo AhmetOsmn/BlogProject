@@ -2,29 +2,29 @@
 @model List<Message2>
 
 @{
-    ViewData["Title"] = "InBox";
+    ViewData["Title"] = "SendBox";
     Layout = "~/Views/Shared/WriterLayout.cshtml";
 }
 
-
-<h1>Gelen Kutusu</h1>
+<h1>Giden Kutusu</h1>
 <table class="table table-bordered">
     <tr>
         <th>#</th>
         <th>Konu</th>
-        <th>Gönderen</th>
+        <th>Alıcı</th>
         <th>Tarih</th>
         <th></th>
     </tr>
-    @foreach (Message2 item in Model)
+    @foreach (var item in Model)
     {
         <tr>
             <th>@item.Id</th>
             <td>@item.Subject</td>
-            <td>@item.SenderWriter.Name</td>
+            <td>@item.ReceiverWriter.Name</td>
             <td>@(((DateTime)item.Date).ToString("dd-MMM-yyyy"))</td>
             <td><a href="/Message/MessageDetails/@item.Id" class="btn btn-warning">Mesajı Aç</a></td>
         </tr>
     }
 </table>
 <a href="/Message/SendMessage/" class="btn btn-success"> Yeni Mesaj Oluştur </a>
+
